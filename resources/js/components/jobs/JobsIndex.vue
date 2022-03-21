@@ -146,17 +146,17 @@ export default {
                 }).then((result) => {
                 if (result.isConfirmed) {
                      destroyJob(id);
-                     getJobs(1,filters);
+                     getJobs(1,{...filters});
                     Swal.fire('Job Deleted Successfully!', '', 'success')
                 }
             })
         }
 
-        onMounted(getJobs(1, filters));
+        onMounted(getJobs(1, {...filters}));
 
         watch(filters,
             (filters) => {
-                getJobs(1, filters);
+                getJobs(1, {...filters});
             }
         );
 
@@ -176,14 +176,10 @@ export default {
         display: flex;
         border: none !important;
     }
-    /* .sr-only{
-        display: none !important;
-    } */
 
     ul.pagination, .page-item{
         padding:10px;
          cursor: pointer;
-
     }
     .pagination-page-nav.active{
         background-color: #0074f2;

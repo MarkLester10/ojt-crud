@@ -27,10 +27,10 @@ class JobRequest extends FormRequest
             'title' => ['required','string','max:50'],
             'description' => ['required','string','max:300'],
             'category'=>['required'],
-            'email' => ['required', 'email'],
-            'company' => ['required'],
-            'address'=> ['string'],
-            'website'=> ['url']
+            'email' => ['required', 'email', 'string','max:50'],
+            'company' => ['required', 'string', 'max:50'],
+            'address'=> ['string', 'nullable', 'max:100'],
+            'website'=> ['url','nullable']
         ];
     }
 }

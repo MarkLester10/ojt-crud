@@ -13,24 +13,25 @@ export default function useJobs() {
     const router = useRouter();
 
     // Get Jobs with optional filters
-    const getJobs = async (page = 1, filters = {'search':' ',
-    'status':'desc', 'category':'','perPage':5,}) => {
+    const getJobs = async (page = 1, filters = {'search':' ','status':'desc', 'category':'','perPage':5,}) => {
         let res = await axios.get(`/api/jobs?page=${page}&search=${filters.search}&status=${filters.status}&category=${filters.category}&perPage=${filters.perPage}`)
         jobs.value = res.data.data;
         jobsPaginationLinks.value = res.data;
     }
 
+    // Get single Job
     const getJob = async (id) => {
         let res = await axios.get(`/api/jobs/${id}`)
         job.value = res.data.data;
     }
 
+    // Delete Job
     const destroyJob = async (id) => {
        await axios.delete(`/api/jobs/${id}`);
     }
 
+    // Store Job
     const storeJob = async (data) => {
-        errors.value = '';
        try{
         await axios.post('/api/jobs/', data);
         await router.push({name:'jobs.index'});
@@ -43,8 +44,8 @@ export default function useJobs() {
        }
     }
 
+    // Update job
     const updateJob = async (id) => {
-        errors.value = '';
        try{
         await axios.put(`/api/jobs/${id}`, job.value);
         await router.push({name:'jobs.index'});
