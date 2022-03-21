@@ -40,30 +40,30 @@
                 <router-link :to="{ name: 'jobs.create' }" class="text-sm font-medium">Create Job</router-link>
             </div>
         </div>
-     <div class="overflow-hidden overflow-x-auto min-w-full align-middle sm:rounded-md">
-        <table class="min-w-full border divide-y divide-gray-200">
+     <div class="overflow-hidden overflow-x-auto w-full align-middle sm:rounded-md">
+        <table class="w-full border divide-y divide-gray-200">
             <thead>
-            <tr>
+            <tr class="whitespace-no-wrap">
                 <th class="px-6 py-3 bg-gray-50">
                     <span
-                        class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">ID</span>
+                        class="text-xs font-medium tracking-wider leading-4 text-gray-500 uppercase whitespace-no-wrap">ID</span>
                 </th>
                 <th class="px-6 py-3 bg-gray-50">
                     <span
-                        class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">Title</span>
+                        class="text-xs font-medium tracking-wider leading-4 text-gray-500 uppercase whitespace-no-wrap">Title</span>
                 </th>
                 <th class="px-6 py-3 bg-gray-50">
                     <span
-                        class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">Company / Description</span>
+                        class="text-xs font-medium tracking-wider leading-4 text-gray-500 uppercase whitespace-no-wrap">Company / Description</span>
                 </th>
                 <th class="px-6 py-3 bg-gray-50">
                     <span
-                        class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">Category</span>
+                        class="text-xs font-medium tracking-wider leading-4 text-gray-500 uppercase whitespace-no-wrap">Category</span>
                 </th>
 
                 <th class="px-6 py-3 bg-gray-50">
                     <span
-                        class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">Date Created</span>
+                        class="text-xs font-medium tracking-wider leading-4 text-gray-500 uppercase whitespace-no-wrap">Date Created</span>
                 </th>
 
                 <th class="px-6 py-3 bg-gray-50">
@@ -81,14 +81,14 @@
             </template>
             <template v-for="job in jobs" :key="job.id" v-else>
 
-                <tr class="bg-white">
+                <tr class="bg-white whitespace-no-wrap">
                     <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
                         {{ job.id }}
                     </td>
                     <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
                         {{ job.title }}
                     </td>
-                    <td class="px-6 py-4 text-sm leading-5 text-gray-900 !whitespace-no-wrap">
+                    <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
                         <strong>{{ job.company }}</strong> <br>
                         {{ job.description }}
                     </td>
@@ -176,10 +176,14 @@ export default {
         display: flex;
         border: none !important;
     }
+    .sr-only{
+        display: none !important;
+    }
 
     ul.pagination, .page-item{
         padding:10px;
          cursor: pointer;
+
     }
     .pagination-page-nav.active{
         background-color: #0074f2;
