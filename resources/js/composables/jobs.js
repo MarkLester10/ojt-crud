@@ -12,8 +12,10 @@ export default function useJobs() {
     const errors = ref([]);
     const router = useRouter();
 
-    const getJobs = async (page = 1) => {
-        let res = await axios.get(`/api/jobs?page=${page}`)
+    // Get Jobs with optional filters
+    const getJobs = async (page = 1, filters = {'search':' ',
+    'status':'desc', 'category':'','perPage':5,}) => {
+        let res = await axios.get(`/api/jobs?page=${page}&search=${filters.search}&status=${filters.status}&category=${filters.category}&perPage=${filters.perPage}`)
         jobs.value = res.data.data;
         jobsPaginationLinks.value = res.data;
     }

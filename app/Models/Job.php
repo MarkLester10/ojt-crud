@@ -40,4 +40,24 @@ class Job extends Model
 
         return $category;
     }
+
+
+    public static function search($search)
+    {
+        return empty($search) ? static::query()
+            : static::query()->where('title', 'like', '%' . $search . '%')
+            ->orWhere('description', 'like', '%' . $search . '%')
+            ->orWhere('company', 'like', '%' . $search . '%');
+    }
+
+    public function scopeStatus($query, $status = 'desc')
+    {
+        $query->orderBy('created_at', $status);
+    }
+
+    public function scopeCategory($query, $category = '')
+    {
+        return empty($category) ? $query
+        : $query->where('category', $category);
+    }
 }

@@ -15,9 +15,14 @@ class JobController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return JobResource::collection(Job::paginate(5));
+        return JobResource::collection(
+            Job::search($request->search ?? '')
+            ->category($request->category ?? '')
+            ->status($request->status ?? 'desc')
+            ->paginate($request->perPage)
+        );
     }
 
     /**
@@ -67,4 +72,6 @@ class JobController extends Controller
         $job->delete();
         return response()->noContent(); //204 successful request no content
     }
+
+
 }
