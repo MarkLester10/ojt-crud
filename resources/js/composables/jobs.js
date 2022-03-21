@@ -6,14 +6,16 @@ import Swal from 'sweetalert2';
 
 export default function useJobs() {
 
+    const jobsPaginationLinks = ref([]);
     const jobs = ref([]);
     const job = ref([]);
     const errors = ref([]);
     const router = useRouter();
 
-    const getJobs = async () => {
-        let res = await axios.get('/api/jobs')
+    const getJobs = async (page = 1) => {
+        let res = await axios.get(`/api/jobs?page=${page}`)
         jobs.value = res.data.data;
+        jobsPaginationLinks.value = res.data;
     }
 
     const getJob = async (id) => {
@@ -62,6 +64,7 @@ export default function useJobs() {
         destroyJob,
         storeJob,
         errors,
-        updateJob
+        updateJob,
+        jobsPaginationLinks
     }
 }

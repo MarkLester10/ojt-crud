@@ -17,7 +17,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        return JobResource::collection(Job::all());
+        return JobResource::collection(Job::paginate(5));
     }
 
     /**

@@ -31,6 +31,7 @@
                 <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
                 <div class="mt-1">
                     <select name="category" v-model="form.category" id="category" class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <option value=''>--select an option---</option>
                         <option value=1>Construction</option>
                         <option value=2>Chemical</option>
                         <option value=3>Petroleum</option>

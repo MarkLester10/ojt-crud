@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class JobResource extends JsonResource
@@ -24,8 +25,8 @@ class JobResource extends JsonResource
             'company'=>$this->company,
             'address'=>$this->address,
             'website'=>$this->website,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => Carbon::parse($this->created_at)->isoFormat('MMMM Do YYYY, dddd, h:mm a'),
+            'updated_at' => Carbon::parse($this->updated_at)->isoFormat('MMMM Do YYYY, dddd, h:mm a'),
         ];
     }
 }

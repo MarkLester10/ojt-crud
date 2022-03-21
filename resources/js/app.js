@@ -9,10 +9,12 @@ Alpine.start();
 import {createApp} from "vue";
 import router from "./routes";
 import JobsIndex from "./components/jobs/JobsIndex.vue";
+import LaravelVuePagination from 'laravel-vue-pagination';
 
 
-createApp({
-    components:{
-        JobsIndex
-    }
-}).use(router).mount('#app');
+const app = createApp({});
+app.component('JobsIndex', JobsIndex)
+    .component('Pagination',LaravelVuePagination)
+    .use(router)
+    .mount('#app');
+
